@@ -72,6 +72,61 @@ def particaoPivoAleatorio(vetor,inicio,fim):
 
 # QuickSort com pivo Medio
 
+def median_of_three(L, low, high):
+    mid = (low+high-1)//2
+    a = L[low]
+    b = L[mid]
+    c = L[high-1]
+    if a <= b <= c:
+        return b, mid
+    if c <= b <= a:
+        return b, mid
+    if a <= c <= b:
+        return c, high-1
+    if b <= c <= a:
+        return c, high-1
+    return a, low
+
+
+def quickSortPivoMedio(L, ascending=True):
+    quicksorthelp(L, 0, len(L), ascending)
+
+
+def quicksorthelp(L, low, high, ascending=True):
+    result = 0
+    if low < high:
+        pivot_location, result = Partition(L, low, high, ascending)
+        result += quicksorthelp(L, low, pivot_location, ascending)
+        result += quicksorthelp(L, pivot_location + 1, high, ascending)
+    return result
+
+
+def Partition(L, low, high, ascending=True):
+    # print('Quicksort, Parameter L:')
+    # print(L)
+    result = 0
+    pivot, pidx = median_of_three(L, low, high)
+    L[low], L[pidx] = L[pidx], L[low]
+    i = low + 1
+    for j in range(low+1, high, 1):
+        result += 1
+        if (ascending and L[j] < pivot) or (not ascending and L[j] > pivot):
+            L[i], L[j] = L[j], L[i]
+            i += 1
+    L[low], L[i-1] = L[i-1], L[low]
+    return i - 1, result
+
+# liste1 = list([3.14159, 1./127, 2.718, 1.618, -23., 3.14159])
+
+
+def swapPositions(list, pos1, pos2):
+    list[pos1], list[pos2] = list[pos2], list[pos1]
+    return list
+
+
+def aux_quicksort_pivo_medio(lista):
+    quickSortPivoMedio(lista, True)
+
 
 # QuickSort com funcao AchaPivo
 def achaPivo(lista, esq, dir):
@@ -147,62 +202,6 @@ def heapSort(arr):
 	for i in range(n - 1, 0, -1):
 		(arr[i], arr[0]) = (arr[0], arr[i])
 		heapify(arr, i, 0)
-
-
-def median_of_three(L, low, high):
-    mid = (low+high-1)//2
-    a = L[low]
-    b = L[mid]
-    c = L[high-1]
-    if a <= b <= c:
-        return b, mid
-    if c <= b <= a:
-        return b, mid
-    if a <= c <= b:
-        return c, high-1
-    if b <= c <= a:
-        return c, high-1
-    return a, low
-
-
-def quickSortPivoMedio(L, ascending=True):
-    quicksorthelp(L, 0, len(L), ascending)
-
-
-def quicksorthelp(L, low, high, ascending=True):
-    result = 0
-    if low < high:
-        pivot_location, result = Partition(L, low, high, ascending)
-        result += quicksorthelp(L, low, pivot_location, ascending)
-        result += quicksorthelp(L, pivot_location + 1, high, ascending)
-    return result
-
-
-def Partition(L, low, high, ascending=True):
-    # print('Quicksort, Parameter L:')
-    # print(L)
-    result = 0
-    pivot, pidx = median_of_three(L, low, high)
-    L[low], L[pidx] = L[pidx], L[low]
-    i = low + 1
-    for j in range(low+1, high, 1):
-        result += 1
-        if (ascending and L[j] < pivot) or (not ascending and L[j] > pivot):
-            L[i], L[j] = L[j], L[i]
-            i += 1
-    L[low], L[i-1] = L[i-1], L[low]
-    return i - 1, result
-
-# liste1 = list([3.14159, 1./127, 2.718, 1.618, -23., 3.14159])
-
-
-def swapPositions(list, pos1, pos2):
-    list[pos1], list[pos2] = list[pos2], list[pos1]
-    return list
-
-
-def aux_quicksort_pivo_medio(lista):
-    quickSortPivoMedio(lista, True)
 
 
 # Caminho onde está armazenado o arquivo no computador
