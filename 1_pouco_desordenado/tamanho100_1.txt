@@ -4,10 +4,10 @@ MERGE SORT
 Tempo Medio: 0.0s 
 
 Quick Sort Aleatorio: 
-Tempo Medio: 0.0005040168762207031s 
+Tempo Medio: 0.0s 
 
 Quick Sort Pivo Medio: 
-Tempo Medio: 0.0004956722259521484s 
+Tempo Medio: 0.0010023117065429688s 
 
 Quick Sort Acha Pivo: 
 Tempo Medio: 0.0s 

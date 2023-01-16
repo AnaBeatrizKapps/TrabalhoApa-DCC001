@@ -4,12 +4,20 @@ import random
 import sys
 import time
 import numpy as np
+import matplotlib.pyplot as plt
 import os
 import pathlib
 
 sys.setrecursionlimit(1000000)
 
-# Mergesort
+
+################################################################################
+############################ ALGORITMOS DE ORDENAÇÃO ###########################
+################################################################################
+
+
+######### Mergesort #########################################################
+
 def mergeSort(lista):
     if len(lista) > 1:
         meio = len(lista)//2
@@ -42,7 +50,9 @@ def mergeSort(lista):
             j=j+1
             k=k+1
 
-# QuickSort com Pivo Aleatorio
+
+######### QuickSort com Pivo Aleatorio ######################################
+
 def quicksortPivoAleatorio(vetor, inicio , fim):
     if(inicio < fim):
         pivoindex = particaorand(vetor,inicio, fim)
@@ -70,7 +80,8 @@ def particaoPivoAleatorio(vetor,inicio,fim):
     pivo = i - 1
     return (pivo)
 
-# QuickSort com pivo Medio
+
+######### QuickSort com pivo Medio ##########################################
 
 def median_of_three(L, low, high):
     mid = (low+high-1)//2
@@ -91,7 +102,6 @@ def median_of_three(L, low, high):
 def quickSortPivoMedio(L, ascending=True):
     quicksorthelp(L, 0, len(L), ascending)
 
-
 def quicksorthelp(L, low, high, ascending=True):
     result = 0
     if low < high:
@@ -99,7 +109,6 @@ def quicksorthelp(L, low, high, ascending=True):
         result += quicksorthelp(L, low, pivot_location, ascending)
         result += quicksorthelp(L, pivot_location + 1, high, ascending)
     return result
-
 
 def Partition(L, low, high, ascending=True):
     # print('Quicksort, Parameter L:')
@@ -118,17 +127,16 @@ def Partition(L, low, high, ascending=True):
 
 # liste1 = list([3.14159, 1./127, 2.718, 1.618, -23., 3.14159])
 
-
 def swapPositions(list, pos1, pos2):
     list[pos1], list[pos2] = list[pos2], list[pos1]
     return list
-
 
 def aux_quicksort_pivo_medio(lista):
     quickSortPivoMedio(lista, True)
 
 
-# QuickSort com funcao AchaPivo
+######### QuickSort com funcao AchaPivo #####################################
+
 def achaPivo(lista, esq, dir):
   pos = esq + 1
   pivo = 0
@@ -175,7 +183,9 @@ def quickSortAchaPivo(lista, esq, dir):
         quickSortAchaPivo(lista, esq, p-1)
         quickSortAchaPivo(lista, p+1, dir)
 
-# HeapSort
+
+######### HeapSort ##########################################################
+
 def heapify(arr, n, i):
 	largest = i
 	l = 2 * i + 1
@@ -192,7 +202,6 @@ def heapify(arr, n, i):
 
 		heapify(arr, n, largest)
 
-
 def heapSort(arr):
 	n = len(arr)
 
@@ -204,8 +213,27 @@ def heapSort(arr):
 		heapify(arr, i, 0)
 
 
+################################################################################
+################## EXECUÇÃO DOS ALGORITMOS - POUCO DESORDENADO #################
+################################################################################
+
 # Caminho onde está armazenado o arquivo no computador
 path = pathlib.Path(__file__).parent.resolve()
+
+somaMergesort100 = somaMergesort1000 = somaMergesort5000 = 0
+somaMergesort10000 = somaMergesort50000 = somaMergesort100000 = 0
+
+somaQuicksortAleatorio100 = somaQuicksortAleatorio1000 = somaQuicksortAleatorio5000 = 0
+somaQuicksortAleatorio10000 = somaQuicksortAleatorio50000 = somaQuicksortAleatorio100000 = 0
+
+somaQuicksortPivoMedio100 = somaQuicksortPivoMedio1000 = somaQuicksortPivoMedio5000 = 0
+somaQuicksortPivoMedio10000 = somaQuicksortPivoMedio50000 = somaQuicksortPivoMedio100000 = 0
+
+somaQuicksortAchaPivo100 = somaQuicksortAchaPivo1000 = somaQuicksortAchaPivo5000 = 0
+somaQuicksortAchaPivo10000 = somaQuicksortAchaPivo50000 = somaQuicksortAchaPivo100000 = 0
+
+somaHeapsort100 = somaHeapsort1000 = somaHeapsort5000 = 0
+somaHeapsort10000 = somaHeapsort50000 = somaHeapsort100000 = 0
 
 for n_execucao in range(1, 11):
     print(n_execucao)
@@ -215,8 +243,7 @@ for n_execucao in range(1, 11):
     ################################################################################
 
     pos1, pos2  = 1,50
-    
-
+        
     lista = range(1,101)
     lista
 
@@ -252,6 +279,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaMergesort100 += tempoMedio
     # print(resultado_vetor_100)
 
     # QUICK SORT PIVO ALEATORIO
@@ -261,6 +289,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAleatorio100 += tempoMedio
     # print(resultado_vetor_100)
 
     #QUICK SORT PIVO MEDIO
@@ -270,6 +299,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortPivoMedio100 += tempoMedio
     # print(resultado_vetor_100)
 
     #QUICK SORT ACHA PIVO
@@ -279,6 +309,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAchaPivo100 += tempoMedio
     # print(resultado_vetor_100)
 
     #HEAP SORT
@@ -288,6 +319,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100.write("Tempo Medio: "+str(tempoMedio)+"s")
+    somaHeapsort100 += tempoMedio
     # print(resultado_vetor_100)
 
     arquivo_tamanho_100.close()
@@ -298,7 +330,6 @@ for n_execucao in range(1, 11):
 
     pos1, pos2  = 1,50
     
-
     lista = range(1,1001)
     lista
 
@@ -333,6 +364,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_1000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaMergesort1000 += tempoMedio
     # print(resultado_vetor_1000)
 
     # QUICK SORT PIVO ALEATORIO
@@ -342,6 +374,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_1000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAleatorio1000 += tempoMedio
     # print(resultado_vetor_1000)
 
     #QUICK SORT PIVO MEDIO
@@ -351,6 +384,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_1000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortPivoMedio1000 += tempoMedio
     # print(resultado_vetor_1000)
 
     #QUICK SORT ACHA PIVO
@@ -360,6 +394,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_1000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAchaPivo1000 += tempoMedio
     # print(resultado_vetor_1000)
 
     #HEAP SORT
@@ -369,6 +404,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_1000.write("Tempo Medio: "+str(tempoMedio)+"s")
+    somaHeapsort1000 += tempoMedio
     # print(resultado_vetor_1000)
 
     arquivo_tamanho_1000.close()
@@ -379,7 +415,6 @@ for n_execucao in range(1, 11):
 
     pos1, pos2  = 1,50
     
-
     lista = range(1,5001)
     lista
 
@@ -414,6 +449,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_5000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaMergesort5000 += tempoMedio
     # print(resultado_vetor_5000)
 
     # QUICK SORT PIVO ALEATORIO
@@ -423,6 +459,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_5000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAleatorio5000 += tempoMedio
     # print(resultado_vetor_5000)
 
     #QUICK SORT PIVO MEDIO
@@ -432,6 +469,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_5000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortPivoMedio5000 += tempoMedio
     # print(resultado_vetor_5000)
 
     #QUICK SORT ACHA PIVO
@@ -441,6 +479,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_5000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAchaPivo5000 += tempoMedio
     # print(resultado_vetor_5000)
 
     #HEAP SORT
@@ -450,6 +489,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_5000.write("Tempo Medio: "+str(tempoMedio)+"s")
+    somaHeapsort5000 += tempoMedio
     # print(resultado_vetor_5000)
 
     arquivo_tamanho_5000.close()
@@ -460,7 +500,6 @@ for n_execucao in range(1, 11):
 
     pos1, pos2  = 1,50
     
-
     lista = range(1,10001)
     lista
 
@@ -495,6 +534,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_10000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaMergesort10000 += tempoMedio
     # print(resultado_vetor_10000)
 
     # QUICK SORT PIVO ALEATORIO
@@ -504,6 +544,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_10000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAleatorio10000 += tempoMedio
     # print(resultado_vetor_10000)
 
     #QUICK SORT PIVO MEDIO
@@ -513,6 +554,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_10000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortPivoMedio10000 += tempoMedio
     # print(resultado_vetor_10000)
 
     # QUICK SORT ACHA PIVO
@@ -522,6 +564,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_10000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAchaPivo10000 += tempoMedio
     # print(resultado_vetor_10000)
 
     #HEAP SORT
@@ -531,6 +574,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_10000.write("Tempo Medio: "+str(tempoMedio)+"s")
+    somaHeapsort10000 += tempoMedio
     # print(resultado_vetor_10000)
 
     arquivo_tamanho_10000.close()
@@ -542,7 +586,6 @@ for n_execucao in range(1, 11):
 
     pos1, pos2  = 1,50
     
-
     lista = range(1,50001)
     lista
 
@@ -577,6 +620,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_50000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaMergesort50000 += tempoMedio
     # print(resultado_vetor_50000)
 
     # QUICK SORT PIVO ALEATORIO
@@ -586,6 +630,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_50000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAleatorio50000 += tempoMedio
     # print(resultado_vetor_50000)
 
     #QUICK SORT PIVO MEDIO
@@ -595,6 +640,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_50000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortPivoMedio50000 += tempoMedio
     # print(resultado_vetor_50000)
 
     #QUICK SORT ACHA PIVO
@@ -604,6 +650,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_50000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAchaPivo50000 += tempoMedio
     # print(resultado_vetor_50000)
 
     #HEAP SORT
@@ -613,6 +660,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_50000.write("Tempo Medio: "+str(tempoMedio)+"s")
+    somaHeapsort50000 += tempoMedio
     # print(resultado_vetor_50000)
 
     arquivo_tamanho_50000.close()
@@ -623,7 +671,6 @@ for n_execucao in range(1, 11):
 
     pos1, pos2  = 1,50
     
-
     lista = range(1,100001)
     lista
 
@@ -658,6 +705,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaMergesort100000 += tempoMedio
     # print(arquivo_tamanho_100000)
 
     # QUICK SORT PIVO ALEATORIO
@@ -667,6 +715,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAleatorio100000 += tempoMedio
     # print(arquivo_tamanho_100000)
 
     #QUICK SORT PIVO MEDIO
@@ -676,6 +725,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortPivoMedio100000 += tempoMedio
     # print(arquivo_tamanho_100000)
 
     #QUICK SORT ACHA PIVO
@@ -685,6 +735,7 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAchaPivo100000 += tempoMedio
     # print(arquivo_tamanho_100000)
 
     #HEAP SORT
@@ -694,6 +745,85 @@ for n_execucao in range(1, 11):
     fim = time.time()
     tempoMedio = fim - ini
     arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s")
+    somaHeapsort100000 += tempoMedio
     # print(arquivo_tamanho_100000)
 
     arquivo_tamanho_100000.close()
+    
+
+################################################################################
+################## GRÁFICOS - POUCO DESORDENADO #################
+################################################################################
+
+mediasMergesort = [somaMergesort100/10, somaMergesort1000/10, somaMergesort5000/10,
+                   somaMergesort10000/10, somaMergesort50000/10, somaMergesort100000/10]
+
+mediasQuickAleatorio = [somaQuicksortAleatorio100/10, somaQuicksortAleatorio1000/10, somaQuicksortAleatorio5000/10, 
+                        somaQuicksortAleatorio10000/10, somaQuicksortAleatorio50000/10, somaQuicksortAleatorio100000/10]
+
+mediasQuickMedio = [somaQuicksortPivoMedio100/10, somaQuicksortPivoMedio1000/10, somaQuicksortPivoMedio5000/10,
+                    somaQuicksortPivoMedio10000/10, somaQuicksortPivoMedio50000/10, somaQuicksortPivoMedio100000/10]
+
+mediasQuickAchaPivo = [somaQuicksortAchaPivo100/10, somaQuicksortAchaPivo1000/10, somaQuicksortAchaPivo5000/10,
+                       somaQuicksortAchaPivo10000/10, somaQuicksortAchaPivo50000/10, somaQuicksortAchaPivo100000/10]
+
+mediasHeapsort = [somaHeapsort100/10, somaHeapsort1000/10, somaHeapsort5000/10,
+                  somaHeapsort10000/10, somaHeapsort50000/10, somaHeapsort100000/10]
+
+tamanhos = [100, 1000, 5000, 10000, 50000, 100000]
+
+plt.rcParams['figure.figsize'] = [20, 8]
+plt.plot(tamanhos, mediasMergesort, marker = 'o', label="Mergesort")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 105000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Mergesort - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+plt.plot(tamanhos, mediasQuickAleatorio, marker = 'o', label="Quicksort pivô aleatório")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 105000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Quicksort pivô aleatório - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+plt.plot(tamanhos, mediasQuickMedio, marker = 'o', label="Quicksort pivô médio")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 105000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Quicksort pivô médio - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+plt.plot(tamanhos, mediasQuickAchaPivo, marker = 'o', label="Quicksort acha pivô")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 105000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Quicksort com função achapivo - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+plt.plot(tamanhos, mediasHeapsort, marker = 'o', label="Heapsort")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 105000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Heapsort - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
