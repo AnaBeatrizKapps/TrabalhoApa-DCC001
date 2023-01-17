@@ -13,4 +13,4 @@ Quick Sort Acha Pivo:
 Tempo Medio: 0.0s 
 
 Heap Sort 
-Tempo Medio: 0.000993490219116211s
+Tempo Medio: 0.0s
