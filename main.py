@@ -1402,7 +1402,7 @@ plt.show()
 
 
 #### Teste do LOG X LOG com curva teórica
-
+## fonte https://www.delftstack.com/pt/howto/python/logarithmic-and-exponential-curve-fitting-python/
 log_x = np.log(tamanhos)
 log_y = np.log(mediasMergesort)
 coefficients = np.polyfit(log_x, mediasMergesort, 1)
