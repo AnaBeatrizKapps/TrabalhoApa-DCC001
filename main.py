@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import pathlib
+import math
 
 sys.setrecursionlimit(1000000)
 
@@ -242,7 +243,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
         
     lista = range(1,101)
     lista
@@ -328,7 +329,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 1000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,1001)
     lista
@@ -413,7 +414,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 5000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,5001)
     lista
@@ -498,7 +499,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 10000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,10001)
     lista
@@ -584,7 +585,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 50000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,50001)
     lista
@@ -669,7 +670,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,100001)
     lista
@@ -856,7 +857,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
         
     lista = range(1,101)
     lista
@@ -942,7 +943,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 1000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,1001)
     lista
@@ -1027,7 +1028,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 5000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,5001)
     lista
@@ -1112,7 +1113,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 10000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,10001)
     lista
@@ -1198,7 +1199,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 50000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,50001)
     lista
@@ -1283,7 +1284,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,100001)
     lista
@@ -1312,57 +1313,57 @@ for n_execucao in range(1, 11):
 
     arquivo_tamanho_100000.write("## Algortimos de Ordenacao - Lista de tamanho 100000 - Caso muito desordenado (50%) ## \n\n")
 
-    # # MERGE SORT
-    # arquivo_tamanho_100000.write("MERGE SORT \n")
-    # ini = time.time()
-    # resultado_merge_100000 = mergeSort(resultado_tamanho_100000)
-    # fim = time.time()
-    # tempoMedio = fim - ini
-    # arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
-    # somaMergesort100000 += tempoMedio
-    # # print(arquivo_tamanho_100000)
+    # MERGE SORT
+    arquivo_tamanho_100000.write("MERGE SORT \n")
+    ini = time.time()
+    resultado_merge_100000 = mergeSort(resultado_tamanho_100000)
+    fim = time.time()
+    tempoMedio = fim - ini
+    arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaMergesort100000 += tempoMedio
+    # print(arquivo_tamanho_100000)
 
-    # # QUICK SORT PIVO ALEATORIO
-    # arquivo_tamanho_100000.write("Quick Sort Aleatorio: \n")
-    # ini = time.time()
-    # resultado_quick_100000 = quicksortPivoAleatorio(resultado_tamanho_100000, 0, len(resultado_tamanho_100000) - 1)
-    # fim = time.time()
-    # tempoMedio = fim - ini
-    # arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
-    # somaQuicksortAleatorio100000 += tempoMedio
-    # # print(arquivo_tamanho_100000)
+    # QUICK SORT PIVO ALEATORIO
+    arquivo_tamanho_100000.write("Quick Sort Aleatorio: \n")
+    ini = time.time()
+    resultado_quick_100000 = quicksortPivoAleatorio(resultado_tamanho_100000, 0, len(resultado_tamanho_100000) - 1)
+    fim = time.time()
+    tempoMedio = fim - ini
+    arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAleatorio100000 += tempoMedio
+    # print(arquivo_tamanho_100000)
 
-    # #QUICK SORT PIVO MEDIO
-    # arquivo_tamanho_100000.write("Quick Sort Pivo Medio: \n")
-    # ini = time.time()
-    # quickSortPivoMedio(resultado_tamanho_100000, True)
-    # fim = time.time()
-    # tempoMedio = fim - ini
-    # arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
-    # somaQuicksortPivoMedio100000 += tempoMedio
-    # # print(arquivo_tamanho_100000)
+    #QUICK SORT PIVO MEDIO
+    arquivo_tamanho_100000.write("Quick Sort Pivo Medio: \n")
+    ini = time.time()
+    quickSortPivoMedio(resultado_tamanho_100000, True)
+    fim = time.time()
+    tempoMedio = fim - ini
+    arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortPivoMedio100000 += tempoMedio
+    # print(arquivo_tamanho_100000)
 
-    # #QUICK SORT ACHA PIVO
-    # arquivo_tamanho_100000.write("Quick Sort Acha Pivo: \n")
-    # ini = time.time()
-    # quickSortAchaPivo(resultado_tamanho_100000, 0, len(resultado_tamanho_100000) - 1)
-    # fim = time.time()
-    # tempoMedio = fim - ini
-    # arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
-    # somaQuicksortAchaPivo100000 += tempoMedio
-    # # print(arquivo_tamanho_100000)
+    #QUICK SORT ACHA PIVO
+    arquivo_tamanho_100000.write("Quick Sort Acha Pivo: \n")
+    ini = time.time()
+    quickSortAchaPivo(resultado_tamanho_100000, 0, len(resultado_tamanho_100000) - 1)
+    fim = time.time()
+    tempoMedio = fim - ini
+    arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s \n\n")
+    somaQuicksortAchaPivo100000 += tempoMedio
+    # print(arquivo_tamanho_100000)
 
-    # #HEAP SORT
-    # arquivo_tamanho_100000.write("Heap Sort \n")
-    # ini = time.time()
-    # heapSort(resultado_tamanho_100000)
-    # fim = time.time()
-    # tempoMedio = fim - ini
-    # arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s")
-    # somaHeapsort100000 += tempoMedio
-    # # print(arquivo_tamanho_100000)
+    #HEAP SORT
+    arquivo_tamanho_100000.write("Heap Sort \n")
+    ini = time.time()
+    heapSort(resultado_tamanho_100000)
+    fim = time.time()
+    tempoMedio = fim - ini
+    arquivo_tamanho_100000.write("Tempo Medio: "+str(tempoMedio)+"s")
+    somaHeapsort100000 += tempoMedio
+    # print(arquivo_tamanho_100000)
 
-    # arquivo_tamanho_100000.close()
+    arquivo_tamanho_100000.close()
     
     
 ################################################################################
@@ -1386,6 +1387,10 @@ mediasHeapsort = [somaHeapsort100/10, somaHeapsort1000/10, somaHeapsort5000/10,
 
 tamanhos = [100, 1000, 5000, 10000, 50000, 100000]
 
+
+
+
+
 plt.rcParams['figure.figsize'] = [20, 8]
 
 plt.plot(tamanhos, mediasMergesort, marker = 'o', label="Mergesort")
@@ -1400,59 +1405,63 @@ plt.grid()
 plt.show()
 
 
-
 #### Teste do LOG X LOG com curva teórica
 ## fonte https://www.delftstack.com/pt/howto/python/logarithmic-and-exponential-curve-fitting-python/
-log_x = np.log(tamanhos)
-log_y = np.log(mediasMergesort)
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasMergesort)
 coefficients = np.polyfit(log_x, mediasMergesort, 1)
 print(coefficients[0],coefficients[1])
 c = coefficients[0]*log_x + coefficients[1]
+plt.legend()
+plt.title("Gráfico Mergesort - Muito Desordenado LOGXLOG")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
 plt.plot(log_x, mediasMergesort, '-', label="logxlog Mergesort ")
 plt.plot(log_x, c)
+plt.grid()
+plt.show()
 
 
+plt.plot(tamanhos, mediasQuickAleatorio, marker = 'o', label="Quicksort pivô aleatório")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 100000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Quicksort pivô aleatório - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
 
-# plt.plot(tamanhos, mediasQuickAleatorio, marker = 'o', label="Quicksort pivô aleatório")
-# plt.xticks(tamanhos, rotation=90)
-# plt.xlim(0, 100000)
-# plt.ylim(0, 0.4)
-# plt.legend()
-# plt.title("Gráfico Quicksort pivô aleatório - Muito Desordenado")
-# plt.xlabel("Tamanhos")
-# plt.ylabel("Tempo médio")
-# plt.grid()
-# plt.show()
+plt.plot(tamanhos, mediasQuickMedio, marker = 'o', label="Quicksort pivô médio")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 100000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Quicksort pivô médio - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
 
-# plt.plot(tamanhos, mediasQuickMedio, marker = 'o', label="Quicksort pivô médio")
-# plt.xticks(tamanhos, rotation=90)
-# plt.xlim(0, 100000)
-# plt.ylim(0, 0.4)
-# plt.legend()
-# plt.title("Gráfico Quicksort pivô médio - Muito Desordenado")
-# plt.xlabel("Tamanhos")
-# plt.ylabel("Tempo médio")
-# plt.grid()
-# plt.show()
+plt.plot(tamanhos, mediasQuickAchaPivo, marker = 'o', label="Quicksort acha pivô")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 100000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Quicksort com função achapivo - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
 
-# plt.plot(tamanhos, mediasQuickAchaPivo, marker = 'o', label="Quicksort acha pivô")
-# plt.xticks(tamanhos, rotation=90)
-# plt.xlim(0, 100000)
-# plt.ylim(0, 0.4)
-# plt.legend()
-# plt.title("Gráfico Quicksort com função achapivo - Muito Desordenado")
-# plt.xlabel("Tamanhos")
-# plt.ylabel("Tempo médio")
-# plt.grid()
-# plt.show()
-
-# plt.plot(tamanhos, mediasHeapsort, marker = 'o', label="Heapsort")
-# plt.xticks(tamanhos, rotation=90)
-# plt.xlim(0, 100000)
-# plt.ylim(0, 0.4)
-# plt.legend()
-# plt.title("Gráfico Heapsort - Muito Desordenado")
-# plt.xlabel("Tamanhos")
-# plt.ylabel("Tempo médio")
-# plt.grid()
-# plt.show()
+plt.plot(tamanhos, mediasHeapsort, marker = 'o', label="Heapsort")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 100000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Gráfico Heapsort - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
