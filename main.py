@@ -830,6 +830,23 @@ plt.grid()
 plt.show()
 
 
+#Todos graficos:
+plt.plot(tamanhos, mediasMergesort, color='b', label="Mergesort")
+plt.plot(tamanhos, mediasQuickAleatorio, color='g', label="Quicksort pivô aleatório")
+plt.plot(tamanhos, mediasQuickMedio, color='r', label="Quicksort pivô médio")
+plt.plot(tamanhos, mediasQuickAchaPivo, color='c', label="Quicksort acha pivô")
+plt.plot(tamanhos, mediasHeapsort, color='m', label="Heapsort")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 100000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Comparação dos algoritmos de ordenação -  Lista pouco desordenada (10%)")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+
 ################################################################################
 ################## EXECUÇÃO DOS ALGORITMOS - MUITO DESORDENADO #################
 ################################################################################
@@ -1438,6 +1455,23 @@ plt.xlim(0, 100000)
 plt.ylim(0, 0.4)
 plt.legend()
 plt.title("Gráfico Heapsort - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+
+#Todos graficos:
+plt.plot(tamanhos, mediasMergesort, color='b', label="Mergesort")
+plt.plot(tamanhos, mediasQuickAleatorio, color='g', label="Quicksort pivô aleatório")
+plt.plot(tamanhos, mediasQuickMedio, color='r', label="Quicksort pivô médio")
+plt.plot(tamanhos, mediasQuickAchaPivo, color='c', label="Quicksort acha pivô")
+plt.plot(tamanhos, mediasHeapsort, color='m', label="Heapsort")
+plt.xticks(tamanhos, rotation=90)
+plt.xlim(0, 100000)
+plt.ylim(0, 0.4)
+plt.legend()
+plt.title("Comparação dos algoritmos de ordenação - Lista muito desordenada (50%)")
 plt.xlabel("Tamanhos")
 plt.ylabel("Tempo médio")
 plt.grid()

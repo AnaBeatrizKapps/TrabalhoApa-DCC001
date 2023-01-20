@@ -7,7 +7,7 @@ Quick Sort Aleatorio:
 Tempo Medio: 0.0s 
 
 Quick Sort Pivo Medio: 
-Tempo Medio: 0.0009152889251708984s 
+Tempo Medio: 0.0009961128234863281s 
 
 Quick Sort Acha Pivo: 
 Tempo Medio: 0.0s 
