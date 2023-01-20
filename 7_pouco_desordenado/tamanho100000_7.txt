@@ -1,16 +1,16 @@
 ## Algortimos de Ordenacao - Lista de tamanho 100000 - Caso pouco desordenado (10%) ## 
 
 MERGE SORT 
-Tempo Medio: 0.4493274688720703s 
+Tempo Medio: 0.3827693462371826s 
 
 Quick Sort Aleatorio: 
-Tempo Medio: 0.34639763832092285s 
+Tempo Medio: 0.2759091854095459s 
 
 Quick Sort Pivo Medio: 
-Tempo Medio: 0.29581546783447266s 
+Tempo Medio: 0.2666146755218506s 
 
 Quick Sort Acha Pivo: 
-Tempo Medio: 0.010476112365722656s 
+Tempo Medio: 0.009369373321533203s 
 
 Heap Sort 
-Tempo Medio: 0.8976345062255859s
+Tempo Medio: 0.6483397483825684s

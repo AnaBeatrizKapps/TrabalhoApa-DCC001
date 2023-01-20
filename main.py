@@ -819,7 +819,7 @@ c = coefficients[0]*log_x + coefficients[1]
 plt.title("Gráfico Quicksort pivô aleatório - Pouco Desordenado")
 plt.xlabel("Tamanhos")
 plt.ylabel("Tempo médio")
-plt.plot(log_x, mediasMergesort, '-', label="Quicksort pivô aleatório ")
+plt.plot(log_x, mediasQuickAleatorio, '-', label="Quicksort pivô aleatório ")
 plt.plot(log_x, c, label="log2n Quicksort pivô aleatório ")
 plt.legend()
 plt.grid()
