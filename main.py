@@ -242,7 +242,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
         
     lista = range(1,101)
     lista
@@ -328,7 +328,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 1000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,1001)
     lista
@@ -413,7 +413,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 5000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,5001)
     lista
@@ -498,7 +498,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 10000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,10001)
     lista
@@ -584,7 +584,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 50000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,50001)
     lista
@@ -669,7 +669,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,100001)
     lista
@@ -785,6 +785,20 @@ plt.ylabel("Tempo médio")
 plt.grid()
 plt.show()
 
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasMergesort)
+coefficients = np.polyfit(log_x, mediasMergesort, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Mergesort - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasMergesort, '-', label="Mergesort")
+plt.plot(log_x, c,  label="log2n Mergesort" )
+plt.legend()
+plt.grid()
+plt.show()
+
 plt.plot(tamanhos, mediasQuickAleatorio, marker = 'o', label="Quicksort pivô aleatório")
 plt.xticks(tamanhos, rotation=90)
 plt.xlim(0, 100000)
@@ -793,6 +807,21 @@ plt.legend()
 plt.title("Gráfico Quicksort pivô aleatório - Pouco Desordenado")
 plt.xlabel("Tamanhos")
 plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasQuickAleatorio)
+coefficients = np.polyfit(log_x, mediasQuickAleatorio, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Quicksort pivô aleatório - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasMergesort, '-', label="Quicksort pivô aleatório ")
+plt.plot(log_x, c, label="log2n Quicksort pivô aleatório ")
+plt.legend()
 plt.grid()
 plt.show()
 
@@ -807,16 +836,48 @@ plt.ylabel("Tempo médio")
 plt.grid()
 plt.show()
 
+
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasQuickMedio)
+coefficients = np.polyfit(log_x, mediasQuickMedio, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Quicksort pivô médio - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasQuickMedio, '-', label="Quicksort pivô médio  - Pouco Desordenado")
+plt.plot(log_x, c,  label="log2n Quicksort pivô médio" )
+plt.legend()
+plt.grid()
+plt.show()
+
 plt.plot(tamanhos, mediasQuickAchaPivo, marker = 'o', label="Quicksort acha pivô")
 plt.xticks(tamanhos, rotation=90)
 plt.xlim(0, 100000)
 plt.ylim(0, 0.4)
-plt.legend()
 plt.title("Gráfico Quicksort com função achapivo - Pouco Desordenado")
 plt.xlabel("Tamanhos")
 plt.ylabel("Tempo médio")
+plt.legend()
 plt.grid()
 plt.show()
+
+
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasQuickAchaPivo)
+coefficients = np.polyfit(log_x, mediasQuickAchaPivo, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Quicksort com função achapivo - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasQuickAchaPivo, '-', label="Quicksort com função achapivo - Pouco Desordenado")
+plt.plot(log_x, c,  label="log2n Quicksort com função achapivo" )
+plt.legend()
+plt.legend()
+plt.grid()
+plt.show()
+
 
 plt.plot(tamanhos, mediasHeapsort, marker = 'o', label="Heapsort")
 plt.xticks(tamanhos, rotation=90)
@@ -826,6 +887,21 @@ plt.legend()
 plt.title("Gráfico Heapsort - Pouco Desordenado")
 plt.xlabel("Tamanhos")
 plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasHeapsort)
+coefficients = np.polyfit(log_x, mediasHeapsort, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Heapsort - Pouco Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasHeapsort, '-', label="Gráfico Heapsort - Pouco Desordenado")
+plt.plot(log_x, c,  label="log2n Heapsort" )
+plt.legend()
 plt.grid()
 plt.show()
 
@@ -873,7 +949,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
         
     lista = range(1,101)
     lista
@@ -959,7 +1035,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 1000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,1001)
     lista
@@ -1044,7 +1120,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 5000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,5001)
     lista
@@ -1129,7 +1205,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 10000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,10001)
     lista
@@ -1215,7 +1291,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 50000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,50001)
     lista
@@ -1300,7 +1376,7 @@ for n_execucao in range(1, 11):
     ################################# TAMANHO 100000 ##################################
     ################################################################################
 
-    pos1, pos2  = 1,50
+
     
     lista = range(1,100001)
     lista
@@ -1416,6 +1492,20 @@ plt.ylabel("Tempo médio")
 plt.grid()
 plt.show()
 
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasMergesort)
+coefficients = np.polyfit(log_x, mediasMergesort, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Mergesort - Muito Desordenado LOG")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasMergesort, '-', label="Mergesort - Muito Desordenado ")
+plt.plot(log_x, c,  label="log2n Mergesort" )
+plt.legend()
+plt.grid()
+plt.show()
+
 plt.plot(tamanhos, mediasQuickAleatorio, marker = 'o', label="Quicksort pivô aleatório")
 plt.xticks(tamanhos, rotation=90)
 plt.xlim(0, 100000)
@@ -1424,6 +1514,20 @@ plt.legend()
 plt.title("Gráfico Quicksort pivô aleatório - Muito Desordenado")
 plt.xlabel("Tamanhos")
 plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasQuickAleatorio)
+coefficients = np.polyfit(log_x, mediasQuickAleatorio, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Quicksort pivô aleatório - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasQuickAleatorio, '-', label="Quicksort pivô aleatório - Muito Desordenado")
+plt.plot(log_x, c, label="log2n Quicksort pivô aleatório")
+plt.legend()
 plt.grid()
 plt.show()
 
@@ -1438,6 +1542,21 @@ plt.ylabel("Tempo médio")
 plt.grid()
 plt.show()
 
+
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasQuickMedio)
+coefficients = np.polyfit(log_x, mediasQuickMedio, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Quicksort pivô médio - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasQuickMedio, '-', label="Quicksort pivô médio")
+plt.plot(log_x, c,  label="log2n Quicksort pivô médio")
+plt.legend()
+plt.grid()
+plt.show()
+
 plt.plot(tamanhos, mediasQuickAchaPivo, marker = 'o', label="Quicksort acha pivô")
 plt.xticks(tamanhos, rotation=90)
 plt.xlim(0, 100000)
@@ -1449,6 +1568,20 @@ plt.ylabel("Tempo médio")
 plt.grid()
 plt.show()
 
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasQuickAchaPivo)
+coefficients = np.polyfit(log_x, mediasQuickAchaPivo, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Quicksort com função achapivo - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasQuickAchaPivo, '-', label="Quicksort com função achapivo - Muito Desordenado")
+plt.plot(log_x, c, label="log2n Quicksort com função achapivo")
+plt.legend()
+plt.grid()
+plt.show()
+
 plt.plot(tamanhos, mediasHeapsort, marker = 'o', label="Heapsort")
 plt.xticks(tamanhos, rotation=90)
 plt.xlim(0, 100000)
@@ -1457,6 +1590,20 @@ plt.legend()
 plt.title("Gráfico Heapsort - Muito Desordenado")
 plt.xlabel("Tamanhos")
 plt.ylabel("Tempo médio")
+plt.grid()
+plt.show()
+
+log_x = np.log2(tamanhos)
+log_y = np.log2(mediasHeapsort)
+coefficients = np.polyfit(log_x, mediasHeapsort, 1)
+print(coefficients[0],coefficients[1])
+c = coefficients[0]*log_x + coefficients[1]
+plt.title("Gráfico Heapsort - Muito Desordenado")
+plt.xlabel("Tamanhos")
+plt.ylabel("Tempo médio")
+plt.plot(log_x, mediasHeapsort, '-', label="Gráfico Heapsort - Muito Desordenado")
+plt.plot(log_x, c, label="log2n Heapsort")
+plt.legend()
 plt.grid()
 plt.show()
 
